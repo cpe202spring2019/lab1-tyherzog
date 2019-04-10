@@ -1,5 +1,5 @@
 # CPE 202 Lab 0
-
+from math import *
 # represents a location using name, latitude and longitude
 class Location:
     def __init__(self, name, lat, lon):
@@ -8,6 +8,12 @@ class Location:
         self.lon = lon      # longitude in degrees (-180 to 180)
 
 # ADD BOILERPLATE HERE (__eq__ and __repr__ functions)
+    def __eq__(self, other):
+        return(type(other) == Location and self.name == other.name and
+            isclose(self.lat, other.lat) and isclose(self.lon, other.lon))
+
+    def __repr__(self):
+        return f"Location('{self.name}', {self.lat}, {self.lon})"
 
 def main():
     loc1 = Location("SLO", 35.3, -120.7)
