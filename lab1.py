@@ -39,16 +39,3 @@ def bin_search(target, low, high, int_list):  # must use recursion
        raise ValueError(f'could not find {target} in {int_list}') #Raises error of None List
    else:
        return None #Returns None if the target is not found
-
-# def reverse_rec(int_list, spot = 0):   # must use recursion
-#    """recursively reverses a list of numbers and returns the reversed list
-#    If list is None, raises ValueError"""
-#    if int_list == []: #Raises an error if the list is None
-#       raise ValueError('List is None type')
-#    if spot == len(int_list): #Tests if base case is met
-#        return int_list.pop() #Pops the end value to then be returned into front of list
-#    int_list.append(reverse_rec(int_list, spot + 1)) #Recursively adds values in reverse order to end of list
-#    if spot != 0:
-#        return int_list.pop(spot) #Simultaneously deletes orginal list values while feeding values to recursion in reverse order
-#    int_list.append(int_list.pop(0)) #If the recursion ends, last value is moved to the end and returns the new reversed list
-#    return int_list #returns the new reversed list
