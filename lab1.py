@@ -28,17 +28,18 @@ def bin_search(target, low, high, int_list):  # must use recursion
    If target is not found returns None. If list is None, raises ValueError """
    if int_list == None: #Checks for the occurence of the list being None
        raise ValueError(f'could not find {target} in {int_list}') #Raises error of None List
-   if high > (len(int_list) - 1):
+   if high > (len(int_list) - 1) or low < 0: #Test if the starting index is out of range
        return None
-   if low < 0:
-       low = None
-
    mid_range_index = (high+low)//2 #Finds the middle of the index of a list with a floor divide
    if mid_range_index == low:
        return None #Returns None if the target is not found
+   elif int_list[0] == target: #checks if the target is at low edge case
+       return 0 #Returns value if found at low edge case
+   elif int_list[(len(int_list) - 1)] == target: #checks if the target is at high edge case
+       return (len(int_list) - 1) #Returns value if found at high edge case
+   elif int_list[mid_range_index] == target: #checks if the target is at mid_range_index
+       return mid_range_index #Returns value if found at mid_range_index
    elif int_list[mid_range_index] < target: #Checks the sorted list if the target is greater than the middle of the index
        return bin_search(target, mid_range_index, high, int_list) #Begins recursion if target is greater than mid_range_index
    elif int_list[mid_range_index] > target: #Checks the sorted list if the target is less than the middle of the index
        return bin_search(target, low, mid_range_index, int_list) #Begins recursion if target is less than mid_range_index
-   elif int_list[mid_range_index] == target: #checks if the target is at mid_range_index
-       return mid_range_index #Returns value if found at mid_range_index
