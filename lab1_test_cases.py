@@ -66,7 +66,7 @@ class TestLab1(unittest.TestCase):
         high = len(list_val)-1
         self.assertEqual(bin_search(5, low, high, list_val), None )
 
-    def test_bin_search_index_out_of_range(self): #Testing if starting index values are out of range
+    def test_bin_search_index_out_of_range_high(self): #Testing if starting index values are out of range
         list_val =[0,1,2,3,4,7,8,9,10]
         low = 0
         high = len(list_val)
@@ -75,11 +75,11 @@ class TestLab1(unittest.TestCase):
     def test_bin_search_Raise_Value_Error(self): #Testing for Value error
         self.assertRaises(ValueError, bin_search, 1, 0, 5, None)
 
-    # def test_bin_search_missing_target(self): #Testing for missing target
-    #     list_val =[0,1,2,3,4,7,8,9,10]
-    #     low = 0
-    #     high = len(list_val)-1
-    #     self.assertEqual(bin_search(5, low, high, list_val), None )
+     def test_bin_search_index_out_of_range_low(self): #Testing if starting index values are out of range
+        list_val =[0,1,2,3,4,7,8,9,10]
+        low = -1
+        high = len(list_val)-1
+        self.assertEqual(bin_search(1, low, high, list_val), None )
 
 
 
