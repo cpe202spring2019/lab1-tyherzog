@@ -51,9 +51,8 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(bin_search(4, low, high, list_val), 4 )
 
     def test_bin_search_none_list_type(self): #Testing for exception
-        tlist = None
         with self.assertRaises(ValueError):  # used to check for exception
-            reverse_rec(tlist)
+            bin_search(4, 0, 10, None)
 
     def test_bin_search_large_list(self): #Testing large data set
         list_val =[0,1,2,3,4,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,29,30,31,32,32,33,34,35,36,37,40,41,42,43,44,50,54,54,54,56]
@@ -66,6 +65,23 @@ class TestLab1(unittest.TestCase):
         low = 0
         high = len(list_val)-1
         self.assertEqual(bin_search(5, low, high, list_val), None )
+
+    def test_bin_search_index_out_of_range(self): #Testing if starting index values are out of range
+        list_val =[0,1,2,3,4,7,8,9,10]
+        low = 0
+        high = len(list_val)
+        self.assertEqual(bin_search(1, low, high, list_val), None )
+
+    def test_bin_search_Raise_Value_Error(self): #Testing for Value error
+        self.assertRaises(ValueError, bin_search, 1, 0, 5, None)
+
+    # def test_bin_search_missing_target(self): #Testing for missing target
+    #     list_val =[0,1,2,3,4,7,8,9,10]
+    #     low = 0
+    #     high = len(list_val)-1
+    #     self.assertEqual(bin_search(5, low, high, list_val), None )
+
+
 
 if __name__ == "__main__":
         unittest.main()
