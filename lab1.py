@@ -26,6 +26,13 @@ def reverse_rec(int_list):   # must use recursion
 def bin_search(target, low, high, int_list):  # must use recursion
    """searches for target in int_list[low..high] and returns index if found
    If target is not found returns None. If list is None, raises ValueError """
+   if int_list == None: #Checks for the occurence of the list being None
+       raise ValueError(f'could not find {target} in {int_list}') #Raises error of None List
+   if high > (len(int_list) - 1):
+       return None
+   if low < 0:
+       low = None
+
    mid_range_index = (high+low)//2 #Finds the middle of the index of a list with a floor divide
    if mid_range_index == low:
        return None #Returns None if the target is not found
@@ -35,7 +42,3 @@ def bin_search(target, low, high, int_list):  # must use recursion
        return bin_search(target, low, mid_range_index, int_list) #Begins recursion if target is less than mid_range_index
    elif int_list[mid_range_index] == target: #checks if the target is at mid_range_index
        return mid_range_index #Returns value if found at mid_range_index
-   elif int_list == None: #Checks for the occurence of the list being None
-       raise ValueError(f'could not find {target} in {int_list}') #Raises error of None List
-   else:
-       return None #Returns None if the target is not found
